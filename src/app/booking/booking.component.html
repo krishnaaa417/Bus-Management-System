@@ -1,0 +1,28 @@
+<form (ngSubmit)="bookTicket()" class="p-4 border rounded">
+  <div class="form-group">
+    <label for="userId">User ID</label>
+    <input id="userId" type="text" [(ngModel)]="booking.userId" name="userId" required class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="busId">Bus ID</label>
+    <input id="busId" type="text" [(ngModel)]="booking.busId" name="busId" required class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="bookingDate">Booking Date</label>
+    <input id="bookingDate" type="date" [(ngModel)]="booking.bookingDate" name="bookingDate" required class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="numberOfSeats">Number of Seats</label>
+    <input id="numberOfSeats" type="number" [(ngModel)]="booking.numberOfSeats" name="numberOfSeats" required class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Book Ticket</button>
+</form>
+
+<div *ngIf="bookingSuccess === true" class="alert alert-success mt-3">
+  Ticket booked successfully!
+</div>
+<div *ngIf="bookingSuccess === false" class="alert alert-danger mt-3">
+  Error booking ticket. Please try again.
+</div>
+
+  

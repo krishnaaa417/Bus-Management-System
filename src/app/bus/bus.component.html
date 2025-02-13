@@ -1,0 +1,16 @@
+<form (ngSubmit)="getBusDetails(busId)" class="p-4 border rounded">
+  <div class="form-group">
+    <label for="busId">Bus ID</label>
+    <input id="busId" type="text" [(ngModel)]="busId" name="busId" required class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Get Bus Details</button>
+</form>
+
+<div *ngIf="bus" class="mt-3">
+  <h2>Bus Details</h2>
+  <ul class="list-group">
+    <li class="list-group-item"><strong>ID:</strong> {{bus.id}}</li>
+    <li class="list-group-item"><strong>Number:</strong> {{bus.number}}</li>
+    <li class="list-group-item"><strong>Capacity:</strong> {{bus.capacity}}</li>
+  </ul>
+</div>

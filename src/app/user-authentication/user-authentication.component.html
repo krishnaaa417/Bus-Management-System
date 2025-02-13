@@ -1,0 +1,19 @@
+<form (ngSubmit)="authenticateUser()">
+    <div>
+      <label for="username">Username</label>
+      <input id="username" type="text" [(ngModel)]="credentials.username" name="username" required>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input id="password" type="password" [(ngModel)]="credentials.password" name="password" required>
+    </div>
+    <button type="submit">Login</button>
+  </form>
+  
+  <div *ngIf="authenticationSuccess === true" class="success">
+    User authenticated successfully!
+  </div>
+  <div *ngIf="authenticationSuccess === false" class="error">
+    Error authenticating user. Please try again.
+  </div>
+  
