@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { UserAuthService } from '../services/user-auth.service';
+import { ApiError } from '../user-registration/ApiError';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/internal/Observable';
+import { AuthenticationService } from '../services/authentication.service';
+
 
 @Component({
   selector: 'app-user-authentication',
@@ -7,18 +11,21 @@ import { UserAuthService } from '../services/user-auth.service';
   styleUrl: './user-authentication.component.css'
 })
 export class UserAuthenticationComponent {
-  credentials: any = {}; // Placeholder for user credentials
-  authenticationSuccess: boolean | null = null; // Indicates if authentication was successful
+  credentials = { username: '', password: '' };
+  authenticationSuccess = false;
 
-  constructor(private userAuthService: UserAuthService) {}
+  constructor(private authenticationService: AuthenticationService) {}
 
   authenticateUser() {
-    this.userAuthService.authenticate(this.credentials).subscribe(response => {
-      console.log('User authenticated successfully', response);
-      this.authenticationSuccess = true; // Set success flag
-    }, error => {
-      console.error('Error authenticating user', error);
-      this.authenticationSuccess = false; // Set error flag
-    });
-  }
+    this.authenticationService.authenticate(this.credentials.username, this.credentials.password).subscribe(
+      response => {
+        console.log('User authenticated successfully', response);
+        this.authenticationSuccess = true;
+      },
+      error => {
+        console.error('Error authenticating user', error);
+        this.authenticationSuccess = false;
+      }
+    );
+}
 }

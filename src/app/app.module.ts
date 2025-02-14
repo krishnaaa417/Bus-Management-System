@@ -35,6 +35,12 @@ import { UserAuthenticationComponent } from './user-authentication/user-authenti
 import { UserService } from './services/user.service';
 import { BookingService } from './services/booking.service';
 import { BusService } from './services/bus.service';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { TravelRequestListComponent } from './travel-request-list/travel-request-list.component';
+import { TravelRequestCreateComponent } from './travel-request-create/travel-request-create.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +70,13 @@ import { BusService } from './services/bus.service';
     UserRegistrationComponent,
     BookingComponent,
     BusComponent,
-    UserAuthenticationComponent
+    UserAuthenticationComponent,
+    LoginComponent,
+    RegisterComponent,
+    UserListComponent,
+    UserProfileComponent,
+    TravelRequestListComponent,
+    TravelRequestCreateComponent
   ],
   imports: [
     BrowserModule,

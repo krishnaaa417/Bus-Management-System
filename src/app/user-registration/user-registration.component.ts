@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { UserService } from '../services/user.service';
-
+import { ApiError } from './ApiError';
 
 @Component({
   selector: 'app-user-registration',
@@ -14,16 +14,16 @@ export class UserRegistrationComponent {
   constructor(private userService: UserService) {}
 
   registerUser() {
-    this.userService.register(this.user).subscribe(
-      response => {
+    this.userService.register(this.user).subscribe({
+      next: (response: any) => {
         console.log('User registered successfully', response);
-        this.registrationSuccess = true; // Set success flag
+        this.registrationSuccess = true;
+      },
+      error: (error: ApiError) => {
+        console.error(`Error ${error.status}: ${error.message}`);
+        this.registrationSuccess = false;
       }
-      ,
-      error => {
-        console.error('Error registering user', error);
-        this.registrationSuccess = false; // Set error flag
-      }
-    );
+    });
   }
+  
 }

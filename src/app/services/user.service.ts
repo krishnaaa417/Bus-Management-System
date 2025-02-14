@@ -7,14 +7,12 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class UserService {
 
-
-
-  private apiUrl = 'https://localhost:7210/api/User/register'; // Replace with your actual API URL
-
   constructor(private http: HttpClient) {}
-
-  register(userData: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, userData);
+  
+  getUsers() {
+    return this.http.get<any[]>('/api/users');
   }
-
+  register(user: any): Observable<any> {
+    return this.http.post('/api/users/register', user);
+  }
 }
